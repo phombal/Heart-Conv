@@ -1,0 +1,10 @@
+# Core SDK for generating patient inputs
+openai>=2.0.0
+
+# Data validation for state models
+pydantic>=2.7.0
+
+# If you're using the OpenAI Agents SDK used by this project, you may also need:
+# openai-agents
+
+openai-agents
