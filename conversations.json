@@ -1,0 +1,801 @@
+[
+    {
+      "id": "HF_CONV_100",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Daniel Kim",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "24/26mg BID", "target": "97/103mg BID", "stage": "early" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "25mg daily", "stage": "early" },
+          { "name": "Furosemide", "type": "Loop Diuretic", "current": "40mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "complete_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports mild shortness of breath and persistent swelling (+3lbs weight gain). Inquire about adherence and side effects."
+    },
+    {
+      "id": "HF_CONV_101",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Sarah Miller",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "10mg daily", "target": "20mg daily", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "100mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "mid" },
+          { "name": "Dapagliflozin", "type": "SGLT2 Inhibitor", "current": "5mg daily", "target": "10mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports stability, full adherence, and wants to progress to target doses. Vitals are optimal."
+    },
+    {
+      "id": "HF_CONV_102",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Robert Davis",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "15mg daily", "target": "20mg daily", "stage": "near_target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Furosemide", "type": "Loop Diuretic", "current": "40mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "triple_therapy_with_diuretic",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports worsening fatigue, stable weight, and *missed doses* of Metoprolol Succinate. BP is borderline low (105/65 mmHg)."
+    },
+    {
+      "id": "HF_CONV_103",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Michael Chen",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "25mg daily", "target": "100mg daily", "stage": "early" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "25mg daily", "target": "200mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "dual_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports severe dizziness on standing (BP 90/60 mmHg) and feels excessively fatigued since starting. Inquire about adherence/side effects."
+    },
+    {
+      "id": "HF_CONV_104",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Laura Green",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "49/51mg BID", "target": "97/103mg BID", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "100mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "25mg daily", "target": "25mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports sudden worsening of shortness of breath (now at rest) and significant weight gain (+6lbs) in 2 days. Vitals: HR 110 bpm, BP 120/80 mmHg."
+    },
+    {
+      "id": "HF_CONV_105",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "James Wilson",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "24/26mg BID", "target": "97/103mg BID", "stage": "early" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "25mg daily", "target": "200mg daily", "stage": "early" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Dapagliflozin", "type": "SGLT2 Inhibitor", "current": "5mg daily", "target": "10mg daily", "stage": "early" },
+          { "name": "Torsemide", "type": "Loop Diuretic", "current": "10mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "complete_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports mild leg swelling, feeling tired, and stable vitals (BP 125/80 mmHg, HR 70 bpm). Patient reports adherence is generally good."
+    },
+    {
+      "id": "HF_CONV_106",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Jessica Lee",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "12.5mg daily", "target": "50mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "triple_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports minimal symptoms and perfect adherence. Vitals are optimal (BP 120/75 mmHg, HR 68 bpm)."
+    },
+    {
+      "id": "HF_CONV_107",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "William Black",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "10mg daily", "target": "20mg daily", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "100mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "mid" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "25mg daily", "target": "25mg daily", "stage": "target" },
+          { "name": "Hydrochlorothiazide", "type": "Thiazide Diuretic", "current": "25mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "complete_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports worsening leg swelling (+5lbs weight gain) and admits to *frequently skipping Spironolactone* because it's 'too many pills.'"
+    },
+    {
+      "id": "HF_CONV_108",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Daniel Carter",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "75mg daily", "target": "100mg daily", "stage": "near_target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Dapagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "10mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports muscle weakness and severe fatigue (K+ levels are high from labs) despite full adherence. BP 100/65 mmHg, HR 55 bpm."
+    },
+    {
+      "id": "HF_CONV_109",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Sophia Rodriguez",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "49/51mg BID", "target": "97/103mg BID", "stage": "mid" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "dual_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient expresses feeling 'overwhelmed' by the twice-daily Entresto dose and is 'skeptical' of its benefit, despite no side effects and stable vitals (BP 115/70 mmHg)."
+    },
+    {
+      "id": "HF_CONV_110",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "David Brown",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "72/78mg BID", "target": "97/103mg BID", "stage": "near_target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Torsemide", "type": "Loop Diuretic", "current": "40mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "triple_therapy_with_diuretic",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports minimal symptoms and stable vitals (BP 115/75 mmHg, HR 65 bpm). Full adherence reported. Focus on achieving target doses."
+    },
+    {
+      "id": "HF_CONV_111",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Ethan White",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "20mg daily", "target": "20mg daily", "stage": "target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "100mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "25mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports severe, persistent fatigue, but stable vitals (BP 110/70 mmHg, HR 60 bpm). Adherence is perfect. Fatigue may limit Metoprolol titration."
+    },
+    {
+      "id": "HF_CONV_112",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Olivia Martinez",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "12.5mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Dapagliflozin", "type": "SGLT2 Inhibitor", "current": "5mg daily", "target": "10mg daily", "stage": "early" },
+          { "name": "Furosemide", "type": "Loop Diuretic", "current": "40mg BID", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "complete_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports constant fluid overload symptoms (+4lbs), but admits to *skipping Furosemide* frequently due to inconvenient timing and urgency."
+    },
+    {
+      "id": "HF_CONV_113",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Jacob Stone",
+        "medications": [
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "100mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "100mg daily", "stage": "mid" }
+        ],
+        "therapy_complexity": "dual_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports severe dizziness (BP 95/60 mmHg) and heart rate of 50 bpm. Patient states he is 'too tired to do anything' but is taking meds."
+    },
+    {
+      "id": "HF_CONV_114",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Chloe Adams",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "24/26mg BID", "target": "97/103mg BID", "stage": "early" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "12.5mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "25mg daily", "stage": "early" },
+          { "name": "Hydrochlorothiazide", "type": "Thiazide Diuretic", "current": "25mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "complete_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports rapid onset of severe leg swelling and shortness of breath at rest (+7lbs in 3 days). BP 135/85 mmHg. Patient is fully adherent."
+    },
+    {
+      "id": "HF_CONV_115",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Daniel Hall",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "100mg daily", "target": "100mg daily", "stage": "target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "75mg daily", "target": "100mg daily", "stage": "near_target" }
+        ],
+        "therapy_complexity": "triple_therapy",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports minimal symptoms and stable vitals (BP 115/75 mmHg, HR 60 bpm). Focus on the final titration steps for Metoprolol and Eplerenone."
+    },
+    {
+      "id": "HF_CONV_116",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Maria Lopez",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "15mg daily", "target": "20mg daily", "stage": "near_target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "mid" },
+          { "name": "Dapagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "10mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports severe dry cough and wishes to stop Lisinopril, despite it being effective. BP 110/70 mmHg. Full adherence."
+    },
+    {
+      "id": "HF_CONV_117",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Benjamin Cook",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "49/51mg BID", "target": "97/103mg BID", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" }
+        ],
+        "therapy_complexity": "dual_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports stable symptoms but admits to *missing Entresto doses* due to high co-pay and expresses a desire to 'cut back' on the meds. BP 118/75 mmHg."
+    },
+    {
+      "id": "HF_CONV_118",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Lisa Wilson",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "25mg daily", "target": "200mg daily", "stage": "early" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "25mg daily", "stage": "early" },
+          { "name": "Furosemide", "type": "Loop Diuretic", "current": "20mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "complete_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports persistent fatigue, dizziness (BP 95/60 mmHg), and *no improvement* in leg swelling (+2lbs). Patient reports good adherence."
+    },
+    {
+      "id": "HF_CONV_119",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Thomas Rogers",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "10mg daily", "target": "20mg daily", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Hydrochlorothiazide", "type": "Thiazide Diuretic", "current": "25mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "triple_therapy_with_diuretic",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports full adherence and stable symptoms, but states he feels the 'need to stop' the program because he prefers a more 'natural, holistic' approach."
+    },
+    {
+      "id": "HF_CONV_120",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Ethan Bailey",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "dual_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports minimal swelling (weight stable) and stable vitals (BP 125/75 mmHg, HR 70 bpm). Full adherence reported."
+    },
+    {
+      "id": "HF_CONV_121",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Victoria Howard",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "20mg daily", "target": "20mg daily", "stage": "target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "mid" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "25mg daily", "target": "25mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports adherence but complains of *gynecomastia* due to Spironolactone, despite stable vitals. Patient asks if the dose must be increased."
+    },
+    {
+      "id": "HF_CONV_122",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Joshua Lewis",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "49/51mg BID", "target": "97/103mg BID", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "triple_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports *new onset lip and tongue swelling* (potential Angioedema) since starting Entresto, despite stable vitals (BP 120/75 mmHg). Immediate safety warning needed."
+    },
+    {
+      "id": "HF_CONV_123",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Charlotte Turner",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "100mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Dapagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "10mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports *missing almost all doses* because the multiple pills are 'confusing' and 'too many to remember,' leading to fear of overdose."
+    },
+    {
+      "id": "HF_CONV_124",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Hannah Murphy",
+        "medications": [
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "50mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "dual_therapy",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports extreme fatigue, lightheadedness, and a low heart rate (HR 48 bpm, BP 100/60 mmHg). Fully adherent."
+    },
+    {
+      "id": "HF_CONV_125",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Andrew Green",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "24/26mg BID", "target": "97/103mg BID", "stage": "early" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "12.5mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "25mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports feeling well, minor exertional SOB, excellent adherence, and is eager for the next titration step. Vitals optimal (BP 125/80 mmHg, HR 72 bpm)."
+    },
+    {
+      "id": "HF_CONV_126",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Thomas Rogers",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "20mg daily", "target": "20mg daily", "stage": "target" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Furosemide", "type": "Loop Diuretic", "current": "80mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "triple_therapy_with_diuretic",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports persistent severe ankle swelling and weight gain (+5lbs) despite high Furosemide dose. BP is high (145/95 mmHg) and cough persists (Lisinopril SE)."
+    },
+    {
+      "id": "HF_CONV_127",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Amelia Smith",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "100mg daily", "target": "100mg daily", "stage": "target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Dapagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "10mg daily", "stage": "target" },
+          { "name": "Hydrochlorothiazide", "type": "Thiazide Diuretic", "current": "12.5mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "complete_therapy",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient is fully adherent and asymptomatic, but informs the AI that she is voluntarily withdrawing from the program, stating 'I just don't feel better enough to justify the number of pills.'"
+    },
+    {
+      "id": "HF_CONV_128",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Jessica Brown",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "49/51mg BID", "target": "97/103mg BID", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "100mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "25mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports severe nausea and vomiting, which she believes is due to Entresto. BP is borderline low (100/60 mmHg), HR 60 bpm."
+    },
+    {
+      "id": "HF_CONV_129",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "William Jackson",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "5mg daily", "target": "20mg daily", "stage": "early" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "12.5mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Dapagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "10mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "triple_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports mild exertional SOB, excellent adherence, and stable vitals (BP 120/75 mmHg, HR 70 bpm). Focus on smooth titration of Lisinopril and Spironolactone."
+    },
+    {
+      "id": "HF_CONV_130",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Olivia Walker",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "25mg daily", "target": "100mg daily", "stage": "early" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "25mg daily", "target": "200mg daily", "stage": "early" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "25mg daily", "target": "50mg daily", "stage": "early" }
+        ],
+        "therapy_complexity": "triple_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports mild fatigue and swelling (+2lbs), but good adherence. Vitals: BP 115/70 mmHg, HR 75 bpm. Recommend titrating Losartan and Metoprolol."
+    },
+    {
+      "id": "HF_CONV_131",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Jacob Cox",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "97/103mg BID", "target": "97/103mg BID", "stage": "target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "100mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "50mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "triple_therapy",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports stability in all symptoms. Vitals: BP 110/70 mmHg, HR 58 bpm. Focus on the final Metoprolol titration, noting the already low HR."
+    },
+    {
+      "id": "HF_CONV_132",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Jennifer Davis",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "20mg daily", "target": "20mg daily", "stage": "target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Hydrochlorothiazide", "type": "Thiazide Diuretic", "current": "25mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "triple_therapy_with_diuretic",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports consistent, annoying dry cough since the last Lisinopril increase. BP is 125/80 mmHg. Patient asks for alternatives to Lisinopril."
+    },
+    {
+      "id": "HF_CONV_133",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Matthew Allen",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "25mg daily", "target": "100mg daily", "stage": "early" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "100mg daily", "stage": "mid" },
+          { "name": "Dapagliflozin", "type": "SGLT2 Inhibitor", "current": "10mg daily", "target": "10mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "triple_therapy",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports stable symptoms, excellent adherence, and optimal vitals (BP 120/75 mmHg). Focus on initiating Losartan titration."
+    },
+    {
+      "id": "HF_CONV_134",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Michelle Lee",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "24/26mg BID", "target": "97/103mg BID", "stage": "early" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Furosemide", "type": "Loop Diuretic", "current": "20mg BID", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "triple_therapy_with_diuretic",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports mild fatigue, stable weight, and asks a detailed question about the mechanism of action of Entresto and Metoprolol."
+    },
+    {
+      "id": "HF_CONV_135",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Kevin Edwards",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "15mg daily", "target": "20mg daily", "stage": "near_target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "150mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "50mg daily", "stage": "target" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "25mg daily", "target": "25mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports mild swelling (+2lbs) and borderline low BP (105/68 mmHg). Fully adherent. Focus on final titration steps, balancing BP risk."
+    },
+    {
+      "id": "HF_CONV_136",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Natalie Reed",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "10mg daily", "target": "20mg daily", "stage": "mid" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Torsemide", "type": "Loop Diuretic", "current": "40mg BID", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "triple_therapy_with_diuretic",
+        "titration_stage": "mid_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports sudden worsening of orthopnea and a persistent cough. Vitals: BP 115/75 mmHg, HR 68 bpm. Fully adherent."
+    },
+    {
+      "id": "HF_CONV_137",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Ethan White",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "72/78mg BID", "target": "97/103mg BID", "stage": "near_target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "100mg daily", "target": "200mg daily", "stage": "advanced" },
+          { "name": "Eplerenone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "100mg daily", "stage": "mid" }
+        ],
+        "therapy_complexity": "triple_therapy",
+        "titration_stage": "near_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient is stable, fully adherent, and asks a nuanced question about the trade-off between targeting max Entresto vs. Metoprolol doses."
+    },
+    {
+      "id": "HF_CONV_138",
+      "patient_profile": {
+        "education_level": "College",
+        "medical_literacy": "Moderate",
+        "description": "Understands some medical concepts, asks informed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Amanda Lopez",
+        "medications": [
+          { "name": "Losartan", "type": "ARB", "current": "25mg daily", "target": "100mg daily", "stage": "early" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "50mg daily", "target": "200mg daily", "stage": "mid" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "12.5mg daily", "target": "50mg daily", "stage": "early" },
+          { "name": "Hydrochlorothiazide", "type": "Thiazide Diuretic", "current": "25mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "quadruple_therapy_with_diuretic",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports feeling well, but weight is up 3lbs. Reports missing *Metoprolol* doses because it makes her drowsy. BP 120/75 mmHg, HR 75 bpm."
+    },
+    {
+      "id": "HF_CONV_139",
+      "patient_profile": {
+        "education_level": "High School",
+        "medical_literacy": "Low",
+        "description": "Uses simple language, may misunderstand medical terms, asks basic questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Jacob Cox",
+        "medications": [
+          { "name": "Entresto", "type": "ARNI", "current": "24/26mg BID", "target": "97/103mg BID", "stage": "early" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "25mg daily", "target": "200mg daily", "stage": "early" },
+          { "name": "Furosemide", "type": "Loop Diuretic", "current": "40mg daily", "target": "dose adjustment as needed", "stage": "maintenance" }
+        ],
+        "therapy_complexity": "triple_therapy_with_diuretic",
+        "titration_stage": "early_optimization"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient reports feeling dizzy (BP 98/60 mmHg), fatigued, and has gained 4lbs. Reports full adherence. Focus on addressing severe side effects and fluid retention."
+    },
+    {
+      "id": "HF_CONV_140",
+      "patient_profile": {
+        "education_level": "Graduate",
+        "medical_literacy": "High",
+        "description": "Uses sophisticated language, may have research background, asks detailed questions"
+      },
+      "clinical_scenario": {
+        "patient_name": "Laura Green",
+        "medications": [
+          { "name": "Lisinopril", "type": "ACE Inhibitor", "current": "20mg daily", "target": "20mg daily", "stage": "target" },
+          { "name": "Metoprolol Succinate", "type": "Beta-Blocker", "current": "200mg daily", "target": "200mg daily", "stage": "target" },
+          { "name": "Spironolactone", "type": "Aldosterone Antagonist", "current": "50mg daily", "target": "50mg daily", "stage": "target" },
+          { "name": "Empagliflozin", "type": "SGLT2 Inhibitor", "current": "25mg daily", "target": "25mg daily", "stage": "target" }
+        ],
+        "therapy_complexity": "quadruple_therapy",
+        "titration_stage": "maintenance"
+      },
+      "conversation_goal": "Simulate Round 1 of the titration journey. Patient has successfully reached target doses and reports feeling excellent (graduated patient). Collect final vitals (BP 115/75 mmHg, HR 65 bpm) and confirm stability."
+    }
+  ]
