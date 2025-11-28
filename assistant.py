@@ -17,20 +17,66 @@ from typing import List
 from prompts.verificationAgentInstructions import verificationAgentInstructions
 from prompts.recommendationInstructions import recommendationAgentInstructions
 from prompts.assistantInstructions import assistantInstructions
+from prompts.holdConditionCheck import ARB_CHECKER, ARNI_CHECKER, ALDOSTERONE_ANTAGONIST_CHECKER, BETA_BLOCKER_CHECKER, SGC_CHECKER, SGLT2_CHECKER, HYDRAZINE_CHECKER
 
+@function_tool
+def checkNotEmergency (sbp: int | None = None, dbp: int | None = None, heartRate: int | None = None, oxygenSaturation: float | None = None, weight: float | None = None, symptoms: str | None = None, sideEffects: str | None = None, adherence: str | None = None, labs: str | None = None):
+    print("CALLING TOOL")
+    if sbp and dbp and sbp < 90 or dbp < 50:
+      return True
+    if heartRate and heartRate < 50 or heartRate > 120:
+      return True
+    if oxygenSaturation and oxygenSaturation < 95:
+      return True
+    if weight and weight < 100 or weight > 200:
+      return True
 
 class AssistantOrchestrator:
     def __init__(self, scenario_str: str):
-        self.recommendation_agent = Agent(
-            name="Recommendation Agent",
-            instructions=recommendationAgentInstructions,
-        )
+        
 
         self.verification_agent = Agent(
             name="Verification Agent",
             instructions=verificationAgentInstructions,
         )
 
+        self.arb_checker = Agent(
+            name="ARB Checker",
+            instructions=ARB_CHECKER,
+        )
+        self.arni_checker = Agent(
+            name="ARNI Checker",
+            instructions=ARNI_CHECKER,
+        )
+        self.aldosterone_antagonist_checker = Agent(
+            name="Aldosterone Antagonist Checker",
+            instructions=ALDOSTERONE_ANTAGONIST_CHECKER,
+        )
+        self.beta_blocker_checker = Agent(
+            name="Beta Blocker Checker",
+            instructions=BETA_BLOCKER_CHECKER,
+        )
+        self.sgc_checker = Agent(
+            name="SGC Checker",
+            instructions=SGC_CHECKER,
+        )
+        self.sglt2_checker = Agent(
+            name="SGLT2 Checker",
+            instructions=SGLT2_CHECKER,
+        )
+        self.hydralazine_checker = Agent(
+            name="Hydralazine Checker",
+            instructions=HYDRAZINE_CHECKER,
+        )
+        self.arb_checker = Agent(
+            name="ARB Checker",
+            instructions=ARB_CHECKER,
+        )
+        self.recommendation_agent = Agent(
+            name="Recommendation Agent",
+            instructions=recommendationAgentInstructions,
+            tools=[checkNotEmergency, self.arb_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for ARBs.", tool_name="check_arb"), self.arni_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for ARNI.", tool_name="check_arni"), self.aldosterone_antagonist_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for aldosterone antagonists.", tool_name="check_aldosterone_antagonist"), self.beta_blocker_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for beta blockers.", tool_name="check_beta_blocker"), self.sgc_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for SGC.", tool_name="check_sgc"), self.sglt2_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for SGLT2.", tool_name="check_sglt2"), self.hydralazine_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for hydralazine.", tool_name="check_hydralazine")],
+        )
         combined_instructions = f"{scenario_str}\n\n{assistantInstructions}"
         self.assistant_agent = Agent(
             name="Assistant Agent",
@@ -70,56 +116,6 @@ class AssistantOrchestrator:
 
 
 async def main():
-    # # Default clinical scenario based on HF_CONV_001 (Abigail Baker) from all_conversations.json
-    # default_medications = [
-    #     Medication(
-    #         name="Losartan",
-    #         type="ARB",
-    #         current="50mg daily",
-    #         target="100mg daily",
-    #         stage="mid",
-    #     ),
-    #     Medication(
-    #         name="Metoprolol Succinate",
-    #         type="Beta-Blocker",
-    #         current="100mg daily",
-    #         target="200mg daily",
-    #         stage="advanced",
-    #     ),
-    #     Medication(
-    #         name="Eplerenone",
-    #         type="Aldosterone Antagonist",
-    #         current="25mg daily",
-    #         target="50mg daily",
-    #         stage="early",
-    #     ),
-    #     Medication(
-    #         name="Dapagliflozin",
-    #         type="SGLT2 Inhibitor",
-    #         current="5mg daily",
-    #         target="10mg daily",
-    #         stage="early",
-    #     ),
-    #     Medication(
-    #         name="Furosemide",
-    #         type="Loop Diuretic",
-    #         current="40mg daily",
-    #         target="dose adjustment as needed",
-    #         stage="maintenance",
-    #     ),
-    # ]
-
-    # default_scenario = ClinicalScenario(
-    #     name="Abigail Baker",
-    #     education_level="College",
-    #     medical_literacy="Moderate",
-    #     description="Understands some medical concepts, asks informed questions",
-    #     medications=default_medications,
-    #     therapy_complexity="complete_therapy",
-    #     titration_state="early_optimization",
-    # )
-
-    # Example: scenario passed in as a JSON string (can be built dynamically per patient)
     scenario_str = """
     "patient_name": "Ethan Bailey",
     "medications": [
