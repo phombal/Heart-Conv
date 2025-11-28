@@ -1,0 +1,34 @@
+{
+  "timestamp": 1764367816.891287,
+  "elapsed_time_seconds": 672.3150956630707,
+  "total_scenarios": 5,
+  "successful": 5,
+  "failed": 0,
+  "batch_size": 5,
+  "output_directory": "/Users/prathamhombal/cs224v-final-project-1/quick_test",
+  "aggregate_statistics": {
+    "overall_quality": {
+      "excellent": 16,
+      "good": 42,
+      "fair": 14,
+      "poor": 3
+    },
+    "medical_accuracy": {
+      "excellent": 22,
+      "good": 40,
+      "fair": 11,
+      "poor": 2
+    },
+    "safety_awareness": {
+      "excellent": 25,
+      "good": 32,
+      "fair": 12,
+      "poor": 6
+    },
+    "total_tool_calls": 0,
+    "recommendation_calls": 0,
+    "verification_calls": 0,
+    "safety_checker_calls": 0,
+    "total_red_flags": 103
+  }
+}
