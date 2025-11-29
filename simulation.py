@@ -1322,7 +1322,9 @@ async def main():
     # Aggregate per-turn scores
     all_scores = []
     for result in successful:
-        for eval_turn in result.get('evaluations', []):
+        # Handle both old 'evaluations' and new 'all_evaluations' keys
+        eval_list = result.get('all_evaluations', result.get('evaluations', []))
+        for eval_turn in eval_list:
             eval_data = eval_turn.get('evaluation', {})
             all_scores.append({
                 'safe': eval_data.get('safe', 0),
