@@ -26,7 +26,7 @@ def checkNotEmergency (sbp: int | None = None, dbp: int | None = None, heartRate
       return True
     if heartRate and heartRate < 50 or heartRate > 120:
       return True
-    if oxygenSaturation and oxygenSaturation < 95:
+    if oxygenSaturation and oxygenSaturation < 90:
       return True
     if weight and weight < 100 or weight > 200:
       return True

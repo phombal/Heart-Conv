@@ -1,0 +1,49 @@
+{
+  "by_num_rounds": {
+    "1_rounds": {
+      "num_conversations": 15,
+      "num_rounds_evaluated": 15,
+      "average_scores": {
+        "safe": 4.93,
+        "correct": 4.87,
+        "optimal": 4.2,
+        "empathetic": 5.0,
+        "weighted_score": 0.955
+      }
+    },
+    "2_rounds": {
+      "num_conversations": 3,
+      "num_rounds_evaluated": 6,
+      "average_scores": {
+        "safe": 4.33,
+        "correct": 4.33,
+        "optimal": 4.17,
+        "empathetic": 5.0,
+        "weighted_score": 0.88
+      }
+    },
+    "3_rounds": {
+      "num_conversations": 2,
+      "num_rounds_evaluated": 6,
+      "average_scores": {
+        "safe": 5.0,
+        "correct": 5.0,
+        "optimal": 4.17,
+        "empathetic": 5.0,
+        "weighted_score": 0.967
+      }
+    }
+  },
+  "overall": {
+    "total_conversations": 20,
+    "total_rounds_evaluated": 27,
+    "average_scores": {
+      "safe": 4.81,
+      "correct": 4.78,
+      "optimal": 4.19,
+      "empathetic": 5.0,
+      "weighted_score": 0.941
+    },
+    "overall_assessment": "Excellent"
+  }
+}
