@@ -49,13 +49,13 @@ to the patient for their titration does not violate any of the contraindications
 
 ### **3\. Neprilysin Inhibitor/ARB (ARNI)**
 
-**Contraindications:**
+*Contraindications:**
 
 * History of angioedema with ACE-I, ARB, or neprilysin inhibitor  
 * Concurrent use with ACE-I (must wait 48 hours after last ACE-I dose)  
 * Pregnancy  
 * Severe hepatic impairment (Child-Pugh Class C)
-
+*
 **Hold or Discontinue if:**
 
 * **Potassium \>5.5 mEq/L** (hold; may resume at lower dose if K+ normalizes)  

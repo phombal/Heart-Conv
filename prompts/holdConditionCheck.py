@@ -1,7 +1,8 @@
 ACEI = """
-Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - only if there is a clear violation should you tell
-the patient that they cannot take their medications.
-**Contraindications:**
+Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - there should be a clear violation
+of the contraindication or HOLD criteria for the medication for you to suggest that the patient discontinue, reduce the dose, or continue.
+
+**Contraindications:** If the patient displays any of this, stop taking the medication.
 
 * History of angioedema with ACE-I  
 * Bilateral renal artery stenosis  
@@ -18,11 +19,13 @@ the patient that they cannot take their medications.
 * **Angioedema** (discontinue permanently)  
 * **Hyperkalemia persisting \>6.0 mEq/L** despite intervention (discontinue)
 
+For each of the ACEI medications that the patient is taking (Enalapril, Lisinopril, Ramipril, Captopril), return the following summary:
+- [Medication Name] | [Condition Violated] | [Discontinue, Reduce Dose, Continue]
 """
 ARB_CHECKER = """
-Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - only if there is a clear violation should you tell
-the patient that they cannot take their medications.
-**Contraindications:**
+Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - there should be a clear violation
+of the contraindication or HOLD criteria for the medication for you to suggest that the patient discontinue, reduce the dose, or continue.
+**Contraindications:** If the patient displays any of this, stop taking the medication.
 
 * History of angioedema with ARB  
 * Bilateral renal artery stenosis  
@@ -38,11 +41,16 @@ the patient that they cannot take their medications.
 * **Symptomatic hypotension** with SBP \<80-90 mmHg  
 * **Angioedema** (discontinue permanently)  
 * **Hyperkalemia persisting \>6.0 mEq/L** despite intervention (discontinue)
+
+For each of the ARB medications that the patient is taking (Losartan, Valsartan, Candesartan), return the following summary:
+- [Medication Name] | [Condition Violated] | [Discontinue, Reduce Dose, Continue]
 """
 
 ARNI_CHECKER = """
-Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - only if there is a clear violation should you tell
-the patient that they cannot take their medications.*Contraindications:**
+Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - there should be a clear violation
+of the contraindication or HOLD criteria for the medication for you to suggest that the patient discontinue, reduce the dose, or continue.
+
+**Contraindications:** If the patient displays any of this, stop taking the medication.
 
 * History of angioedema with ACE-I, ARB, or neprilysin inhibitor  
 * Concurrent use with ACE-I (must wait 48 hours after last ACE-I dose)  
@@ -57,14 +65,16 @@ the patient that they cannot take their medications.*Contraindications:**
 * **Symptomatic hypotension** with SBP \<80-90 mmHg  
 * **Angioedema** (discontinue permanently)  
 * **Hyperkalemia persisting \>6.0 mEq/L** despite intervention (discontinue)
+
+For each of the ARNI medications that the patient is taking (Sacubitril/Valsartan), return the following summary:
+- [Medication Name] | [Condition Violated] | [Discontinue, Reduce Dose, Continue]
 """
 
 ALDOSTERONE_ANTAGONIST_CHECKER = """
-Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - only if there is a clear violation should you tell
-the patient that they cannot take their medications.
-Aldosterone Antagonists**
+Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - there should be a clear violation
+of the contraindication or HOLD criteria for the medication for you to suggest that the patient discontinue, reduce the dose, or continue.
 
-**Contraindications:**
+**Contraindications:** If the patient displays any of this, stop taking the medication.
 
 * **Baseline potassium \>5.0 mEq/L**  
 * **eGFR \<30 mL/min**  
@@ -79,12 +89,14 @@ Aldosterone Antagonists**
 * **Severe gynecomastia or breast tenderness** (consider switching spironolactone to eplerenone)  
 * **Symptomatic hypotension**
 
+For each of the aldosterone antagonist medications that the patient is taking (Spironolactone, Eplerenone), return the following summary:
+- [Medication Name] | [Condition Violated] | [Discontinue, Reduce Dose, Continue]
 """
 BETA_BLOCKER_CHECKER = """
-Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - only if there is a clear violation should you tell
-the patient that they cannot take their medications.
+Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - there should be a clear violation
+of the contraindication or HOLD criteria for the medication for you to suggest that the patient discontinue, reduce the dose, or continue.
 
-**Contraindications:**
+**Contraindications:** If the patient displays any of this, stop taking the medication.
 
 * Symptomatic bradycardia or heart rate \<50 bpm  
 * Second or third-degree AV block (without pacemaker)  
@@ -103,13 +115,15 @@ the patient that they cannot take their medications.
 * **Acute decompensated heart failure** requiring IV diuretics/inotropes (hold temporarily)  
 * **Severe bronchospasm** (discontinue)
 
+For each of the beta blocker medications that the patient is taking (Carvedilol, Metoprolol Succinate, Bisoprolol), return the following summary:
+- [Medication Name] | [Condition Violated] | [Discontinue, Reduce Dose, Continue]
 """
 
 HYDRAZINE_CHECKER = """
-Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - only if there is a clear violation should you tell
-the patient that they cannot take their medications.
+Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - there should be a clear violation
+of the contraindication or HOLD criteria for the medication for you to suggest that the patient discontinue, reduce the dose, or continue.
 
-**Contraindications:**
+**Contraindications:** If the patient displays any of this, stop taking the medication.
 - SBP <85–90 mmHg symptomatic
 - PDE-5 inhibitor use
 - Recent MI (<48 hr)
@@ -121,13 +135,15 @@ the patient that they cannot take their medications.
 - Severe headache
 - Tachycardia >110–120 bpm
 
+For each of the hydralazine medications that the patient is taking (Hydralazine, Isosorbide Dinitrate, Fixed-Dose Combination (BiDil)), return the following summary:
+- [Medication Name] | [Condition Violated] | [Discontinue, Reduce Dose, Continue]
 """
 
 SGLT2_CHECKER = """
-Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - only if there is a clear violation should you tell
-the patient that they cannot take their medications.
+Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - there should be a clear violation
+of the contraindication or HOLD criteria for the medication for you to suggest that the patient discontinue, reduce the dose, or continue.
 
-### Contraindications
+### Contraindications If the patient displays any of this, stop taking the medication.
 - eGFR <20 (dapagliflozin, empagliflozin)
 - eGFR <25 (sotagliflozin)
 - Type 1 diabetes
@@ -142,12 +158,14 @@ the patient that they cannot take their medications.
 - Fournier’s gangrene
 - AKI (temporary hold)
 
+For each of the SGLT2 medications that the patient is taking (Dapagliflozin, Empagliflozin, Sotagliflozin), return the following summary:
+- [Medication Name] | [Condition Violated] | [Discontinue, Reduce Dose, Continue]
 """
 
 SGC_CHECKER = """
-Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - only if there is a clear violation should you tell
-the patient that they cannot take their medications.
-### Contraindications
+Verify the patient's current medical profile doesn't violate any of these contraindications or HOLD criteria. Don't be cautious - there should be a clear violation
+of the contraindication or HOLD criteria for the medication for you to suggest that the patient discontinue, reduce the dose, or continue.
+### Contraindications If the patient displays any of this, stop taking the medication.
 - PDE-5 inhibitor use
 - Pregnancy
 - Severe hepatic impairment (Child-Pugh C)
@@ -159,4 +177,6 @@ the patient that they cannot take their medications.
 - Pregnancy
 - Worsening anemia
 
+For each of the SGC medications that the patient is taking (Vericiguat), return the following summary:
+- [Medication Name] | [Condition Violated] | [Discontinue, Reduce Dose, Continue]
 """
