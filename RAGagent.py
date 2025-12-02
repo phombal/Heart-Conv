@@ -210,7 +210,7 @@ def physicianApproval(recommendation: str):
 
 
 
-class AssistantOrchestrator:
+class RAGAgent:
     def __init__(self, scenario_str: str):
         self.verification_agent = Agent(
             name="Verification Agent",
