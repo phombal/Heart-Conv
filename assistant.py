@@ -127,53 +127,140 @@ def checkNotEmergency (sbp: int | None = None, dbp: int | None = None, heartRate
 def physicianApproval(recommendation: str):
     return True
 
+@function_tool
+async def verifyPhysicianApproval(recommendation: str, patient_vitals: str = "", patient_labs: str = "", approved: bool = True):
+    """
+    After receiving physician approval, verify that the approved recommendation 
+    does not violate any contraindications or HOLD criteria.
+    
+    This runs AFTER physicianApproval returns True.
+    """
+    from agents import Agent, Runner
+    
+    verification_agent = Agent(
+        name="Physician Approval Verification Agent",
+        instructions=verificationAgentInstructions,
+        model="gpt-4o-mini"
+    )
+    
+    verification_prompt = f"""
+The physician has approved the following recommendation:
+
+RECOMMENDATION:
+{recommendation}
+
+PATIENT VITALS:
+{patient_vitals}
+
+PATIENT LABS:
+{patient_labs}
+
+PHYSICIAN DECISION: {"APPROVED" if approved else "NOT APPROVED"}
+
+Please verify if this approved recommendation violates any contraindications or HOLD criteria from the protocol.
+
+Respond with:
+1. VERIFIED - if the approval is safe and appropriate
+2. CONCERN - if there are potential safety issues
+3. REJECT - if the approval clearly violates protocol and should not proceed
+
+Provide detailed reasoning for your assessment.
+"""
+    
+    result = await Runner.run(verification_agent, verification_prompt)
+    return str(result.final_output) if result.final_output else "Unable to verify"
+
+
 class AssistantOrchestrator:
     def __init__(self, scenario_str: str):
         self.verification_agent = Agent(
             name="Verification Agent",
             instructions=verificationAgentInstructions,
+            model="gpt-4o-mini"
         )
         self.arb_checker = Agent(
             name="ARB Checker",
             instructions=ARB_CHECKER,
+            model="gpt-4o-mini"
         )
         self.arni_checker = Agent(
             name="ARNI Checker",
             instructions=ARNI_CHECKER,
+            model="gpt-4o-mini"
         )
         self.aldosterone_antagonist_checker = Agent(
             name="Aldosterone Antagonist Checker",
             instructions=ALDOSTERONE_ANTAGONIST_CHECKER,
+            model="gpt-4o-mini"
         )
         self.beta_blocker_checker = Agent(
             name="Beta Blocker Checker",
             instructions=BETA_BLOCKER_CHECKER,
+            model="gpt-4o-mini"
         )
         self.sgc_checker = Agent(
             name="SGC Checker",
             instructions=SGC_CHECKER,
+            model="gpt-4o-mini"
         )
         self.sglt2_checker = Agent(
             name="SGLT2 Checker",
             instructions=SGLT2_CHECKER,
+            model="gpt-4o-mini"
         )
         self.hydralazine_checker = Agent(
             name="Hydralazine Checker",
             instructions=HYDRAZINE_CHECKER,
+            model="gpt-4o-mini"
         )
         self.arb_checker = Agent(
             name="ARB Checker",
             instructions=ARB_CHECKER,
+            model="gpt-4o-mini"
         )
         self.recommendation_agent = Agent(
             name="Recommendation Agent",
             instructions=recommendationAgentInstructions,
-            tools=[checkNotEmergency, self.arb_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for ARBs.", tool_name="check_arb"), self.arni_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for ARNI.", tool_name="check_arni"), self.aldosterone_antagonist_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for aldosterone antagonists.", tool_name="check_aldosterone_antagonist"), self.beta_blocker_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for beta blockers.", tool_name="check_beta_blocker"), self.sgc_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for SGC.", tool_name="check_sgc"), self.sglt2_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for SGLT2.", tool_name="check_sglt2"), self.hydralazine_checker.as_tool(tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for hydralazine.", tool_name="check_hydralazine"), physicianApproval],
+            model="gpt-4o-mini",
+            tools=[
+                checkNotEmergency, 
+                self.arb_checker.as_tool(
+                    tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for ARBs.", 
+                    tool_name="check_arb"
+                ), 
+                self.arni_checker.as_tool(
+                    tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for ARNI.", 
+                    tool_name="check_arni"
+                ), 
+                self.aldosterone_antagonist_checker.as_tool(
+                    tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for aldosterone antagonists.", 
+                    tool_name="check_aldosterone_antagonist"
+                ), 
+                self.beta_blocker_checker.as_tool(
+                    tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for beta blockers.", 
+                    tool_name="check_beta_blocker"
+                ), 
+                self.sgc_checker.as_tool(
+                    tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for SGC.", 
+                    tool_name="check_sgc"
+                ), 
+                self.sglt2_checker.as_tool(
+                    tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for SGLT2.", 
+                    tool_name="check_sglt2"
+                ), 
+                self.hydralazine_checker.as_tool(
+                    tool_description="Check if the patient's condition violates any of the contraindications or HOLD criteria for hydralazine.", 
+                    tool_name="check_hydralazine"
+                ), 
+                physicianApproval,
+                verifyPhysicianApproval
+            ],
         )
         combined_instructions = f"{scenario_str}\n\n{assistantInstructions}"
         self.assistant_agent = Agent(
             name="Assistant Agent",
             instructions=combined_instructions,
+            model="gpt-4o-mini",
             tools=[
                 self.recommendation_agent.as_tool(
                     tool_name="call_recommendation_agent",
@@ -247,7 +334,7 @@ class AssistantOrchestrator:
 async def main():
     scenario_str = """
      "clinical_scenario": {
-        "patient_name": "Abigail Baker",
+        "patient_name": "Patient",
         "medications": [
           {
             "name": "Losartan",
