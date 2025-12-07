@@ -204,7 +204,20 @@ If the patient has to Reduce Dose or Discontinue, you must recommend this. Reduc
     * **Maximum dose: 10 mg PO daily**
 
     ---
-### Step 4: Get patient approval.
-  After you have a recommendation, call the physicianApproval tool to get approval from the physician. If the physician returns True
-  you can share the recommendation with the assistant to share with the patient. If the physician returns False, you must recommend that the patient
+### Step 4: Get physician approval and verify it.
+  a. After you have a recommendation, call the physicianApproval tool to get approval from the physician.
+     - Pass the recommendation as a string
+  
+  b. After receiving physician approval (returns True), IMMEDIATELY call the verifyPhysicianApproval tool to ensure the approval is clinically appropriate and safe.
+     - Pass the recommendation
+     - Pass patient vitals as a string (e.g., "BP: 120/75, HR: 68")
+     - Pass patient labs as a string (e.g., "K+: 4.5, Cr: 1.0, eGFR: 65")
+     - Pass approved=True
+  
+  c. Review the verification result:
+     - If response contains "VERIFIED": The approval is safe - proceed with communicating the recommendation to the patient
+     - If response contains "CONCERN": Review the concerns raised carefully and consider modifying the recommendation
+     - If response contains "REJECT": Do NOT proceed with the recommendation. Explain to the patient why the medication change cannot be made at this time and what alternative steps will be taken.
+  
+  d. Only share the final recommendation with the assistant to communicate to the patient if the verification shows VERIFIED.
 """
