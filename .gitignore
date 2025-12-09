@@ -1,0 +1,15 @@
+# Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+
+# System files
+.DS_Store
+*.log
+
+# Any other temporary files
+*.tmp
+
