@@ -14,7 +14,7 @@ from agents import (
 import asyncio
 from typing import List
 
-from prompts.verificationAgentInstructions import verificationAgentInstructions
+from prompts.physicianApprovalVerificationInstructions import physicianApprovalVerificationInstructions
 from prompts.recommendationInstructions import recommendationAgentInstructions
 from prompts.assistantInstructions import assistantInstructions
 from prompts.holdConditionCheck import ARB_CHECKER, ARNI_CHECKER, ALDOSTERONE_ANTAGONIST_CHECKER, BETA_BLOCKER_CHECKER, SGC_CHECKER, SGLT2_CHECKER, HYDRAZINE_CHECKER
@@ -139,7 +139,7 @@ async def verifyPhysicianApproval(recommendation: str, patient_vitals: str = "",
     
     verification_agent = Agent(
         name="Physician Approval Verification Agent",
-        instructions=verificationAgentInstructions,
+        instructions=physicianApprovalVerificationInstructions,
         model="gpt-4o-mini"
     )
     
@@ -175,7 +175,7 @@ class AssistantOrchestrator:
     def __init__(self, scenario_str: str):
         self.verification_agent = Agent(
             name="Verification Agent",
-            instructions=verificationAgentInstructions,
+            instructions=physicianApprovalVerificationInstructions,
             model="gpt-4o-mini"
         )
         self.arb_checker = Agent(
